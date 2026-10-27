@@ -1,0 +1,9 @@
+[
+  "BENIGN",
+  "Botnet-C2",
+  "BruteForce-SSH",
+  "DDoS-LOIC",
+  "DoS-SynFlood",
+  "PortScan",
+  "WebAttack"
+]

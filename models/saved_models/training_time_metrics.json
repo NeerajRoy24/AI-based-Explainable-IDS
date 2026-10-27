@@ -1,0 +1,27 @@
+{
+  "Random_Forest": {
+    "binary_train_time_sec": 0.4023,
+    "multi_train_time_sec": 0.3946,
+    "total_train_time_sec": 0.797
+  },
+  "XGBoost": {
+    "binary_train_time_sec": 0.4418,
+    "multi_train_time_sec": 0.7396,
+    "total_train_time_sec": 1.1814
+  },
+  "Deep_Neural_Network_MLP": {
+    "binary_train_time_sec": 1.5402,
+    "multi_train_time_sec": 2.8247,
+    "total_train_time_sec": 4.3649
+  },
+  "Gradient_Boosting": {
+    "binary_train_time_sec": 6.0643,
+    "multi_train_time_sec": 48.9685,
+    "total_train_time_sec": 55.0328
+  },
+  "Logistic_Regression": {
+    "binary_train_time_sec": 0.0225,
+    "multi_train_time_sec": 0.1005,
+    "total_train_time_sec": 0.123
+  }
+}

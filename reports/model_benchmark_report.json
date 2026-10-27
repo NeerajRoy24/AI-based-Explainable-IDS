@@ -1,0 +1,853 @@
+{
+  "binary_evaluation": {
+    "Random_Forest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "latency_ms_per_sample": 0.01582,
+      "throughput_samples_per_sec": 63205.8,
+      "f1_95ci": [
+        1.0,
+        1.0
+      ],
+      "accuracy_95ci": [
+        1.0,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          1477,
+          0
+        ],
+        [
+          0,
+          1523
+        ]
+      ],
+      "train_time_sec": 0.4023
+    },
+    "XGBoost": {
+      "accuracy": 0.9993,
+      "precision": 1.0,
+      "recall": 0.9987,
+      "f1_score": 0.9993,
+      "roc_auc": 1.0,
+      "latency_ms_per_sample": 0.00131,
+      "throughput_samples_per_sec": 766126.8,
+      "f1_95ci": [
+        0.9983,
+        1.0
+      ],
+      "accuracy_95ci": [
+        0.9983,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          1477,
+          0
+        ],
+        [
+          2,
+          1521
+        ]
+      ],
+      "train_time_sec": 0.4418
+    },
+    "Deep_Neural_Network_MLP": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "latency_ms_per_sample": 0.00164,
+      "throughput_samples_per_sec": 609842.7,
+      "f1_95ci": [
+        1.0,
+        1.0
+      ],
+      "accuracy_95ci": [
+        1.0,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          1477,
+          0
+        ],
+        [
+          0,
+          1523
+        ]
+      ],
+      "train_time_sec": 1.5402
+    },
+    "Gradient_Boosting": {
+      "accuracy": 0.999,
+      "precision": 0.9987,
+      "recall": 0.9993,
+      "f1_score": 0.999,
+      "roc_auc": 1.0,
+      "latency_ms_per_sample": 0.002,
+      "throughput_samples_per_sec": 499725.1,
+      "f1_95ci": [
+        0.998,
+        1.0
+      ],
+      "accuracy_95ci": [
+        0.998,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          1475,
+          2
+        ],
+        [
+          1,
+          1522
+        ]
+      ],
+      "train_time_sec": 6.0643
+    },
+    "Logistic_Regression": {
+      "accuracy": 0.9977,
+      "precision": 0.9961,
+      "recall": 0.9993,
+      "f1_score": 0.9977,
+      "roc_auc": 1.0,
+      "latency_ms_per_sample": 0.00017,
+      "throughput_samples_per_sec": 5890425.9,
+      "f1_95ci": [
+        0.996,
+        0.9993
+      ],
+      "accuracy_95ci": [
+        0.996,
+        0.9993
+      ],
+      "confusion_matrix": [
+        [
+          1471,
+          6
+        ],
+        [
+          1,
+          1522
+        ]
+      ],
+      "train_time_sec": 0.0225
+    }
+  },
+  "multiclass_evaluation": {
+    "Random_Forest": {
+      "accuracy": 0.9993,
+      "f1_macro": 0.9991,
+      "f1_weighted": 0.9993,
+      "precision_macro": 0.9992,
+      "recall_macro": 0.9991,
+      "roc_auc_ovr": 1.0,
+      "confusion_matrix": [
+        [
+          1477,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          157,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          250,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          300,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          361,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          307,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146
+        ]
+      ],
+      "classification_report": {
+        "BENIGN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1477.0
+        },
+        "Botnet-C2": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 157.0
+        },
+        "BruteForce-SSH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 250.0
+        },
+        "DDoS-LOIC": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 300.0
+        },
+        "DoS-SynFlood": {
+          "precision": 0.9944903581267218,
+          "recall": 1.0,
+          "f1-score": 0.9972375690607734,
+          "support": 361.0
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 0.9935275080906149,
+          "f1-score": 0.9967532467532467,
+          "support": 309.0
+        },
+        "WebAttack": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 146.0
+        },
+        "accuracy": 0.9993333333333333,
+        "macro avg": {
+          "precision": 0.9992129083038174,
+          "recall": 0.9990753582986593,
+          "f1-score": 0.9991415451162887,
+          "support": 3000.0
+        },
+        "weighted avg": {
+          "precision": 0.9993370064279155,
+          "recall": 0.9993333333333333,
+          "f1-score": 0.9993331718925641,
+          "support": 3000.0
+        }
+      },
+      "train_time_sec": 0.3946
+    },
+    "XGBoost": {
+      "accuracy": 0.9993,
+      "f1_macro": 0.9991,
+      "f1_weighted": 0.9993,
+      "precision_macro": 0.9992,
+      "recall_macro": 0.9991,
+      "roc_auc_ovr": 1.0,
+      "confusion_matrix": [
+        [
+          1477,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          157,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          250,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          300,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          361,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          307,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146
+        ]
+      ],
+      "classification_report": {
+        "BENIGN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1477.0
+        },
+        "Botnet-C2": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 157.0
+        },
+        "BruteForce-SSH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 250.0
+        },
+        "DDoS-LOIC": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 300.0
+        },
+        "DoS-SynFlood": {
+          "precision": 0.9944903581267218,
+          "recall": 1.0,
+          "f1-score": 0.9972375690607734,
+          "support": 361.0
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 0.9935275080906149,
+          "f1-score": 0.9967532467532467,
+          "support": 309.0
+        },
+        "WebAttack": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 146.0
+        },
+        "accuracy": 0.9993333333333333,
+        "macro avg": {
+          "precision": 0.9992129083038174,
+          "recall": 0.9990753582986593,
+          "f1-score": 0.9991415451162887,
+          "support": 3000.0
+        },
+        "weighted avg": {
+          "precision": 0.9993370064279155,
+          "recall": 0.9993333333333333,
+          "f1-score": 0.9993331718925641,
+          "support": 3000.0
+        }
+      },
+      "train_time_sec": 0.7396
+    },
+    "Deep_Neural_Network_MLP": {
+      "accuracy": 0.9953,
+      "f1_macro": 0.994,
+      "f1_weighted": 0.9953,
+      "precision_macro": 0.9947,
+      "recall_macro": 0.9935,
+      "roc_auc_ovr": 0.9995,
+      "confusion_matrix": [
+        [
+          1477,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          157,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          250,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          300,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          361,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          14,
+          295,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146
+        ]
+      ],
+      "classification_report": {
+        "BENIGN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1477.0
+        },
+        "Botnet-C2": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 157.0
+        },
+        "BruteForce-SSH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 250.0
+        },
+        "DDoS-LOIC": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 300.0
+        },
+        "DoS-SynFlood": {
+          "precision": 0.9626666666666667,
+          "recall": 1.0,
+          "f1-score": 0.9809782608695652,
+          "support": 361.0
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 0.9546925566343042,
+          "f1-score": 0.9768211920529801,
+          "support": 309.0
+        },
+        "WebAttack": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 146.0
+        },
+        "accuracy": 0.9953333333333333,
+        "macro avg": {
+          "precision": 0.9946666666666666,
+          "recall": 0.993527508090615,
+          "f1-score": 0.9939713504175065,
+          "support": 3000.0
+        },
+        "weighted avg": {
+          "precision": 0.9955075555555556,
+          "recall": 0.9953333333333333,
+          "f1-score": 0.9953236335060947,
+          "support": 3000.0
+        }
+      },
+      "train_time_sec": 2.8247
+    },
+    "Gradient_Boosting": {
+      "accuracy": 1.0,
+      "f1_macro": 1.0,
+      "f1_weighted": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "roc_auc_ovr": 1.0,
+      "confusion_matrix": [
+        [
+          1477,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          157,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          250,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          300,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          361,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          309,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146
+        ]
+      ],
+      "classification_report": {
+        "BENIGN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1477.0
+        },
+        "Botnet-C2": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 157.0
+        },
+        "BruteForce-SSH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 250.0
+        },
+        "DDoS-LOIC": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 300.0
+        },
+        "DoS-SynFlood": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 361.0
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 309.0
+        },
+        "WebAttack": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 146.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 3000.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 3000.0
+        }
+      },
+      "train_time_sec": 48.9685
+    },
+    "Logistic_Regression": {
+      "accuracy": 0.994,
+      "f1_macro": 0.9922,
+      "f1_weighted": 0.994,
+      "precision_macro": 0.9932,
+      "recall_macro": 0.9917,
+      "roc_auc_ovr": 0.9996,
+      "confusion_matrix": [
+        [
+          1477,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          157,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          250,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          300,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          361,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          18,
+          291,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          146
+        ]
+      ],
+      "classification_report": {
+        "BENIGN": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1477.0
+        },
+        "Botnet-C2": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 157.0
+        },
+        "BruteForce-SSH": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 250.0
+        },
+        "DDoS-LOIC": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 300.0
+        },
+        "DoS-SynFlood": {
+          "precision": 0.9525065963060686,
+          "recall": 1.0,
+          "f1-score": 0.9756756756756757,
+          "support": 361.0
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 0.941747572815534,
+          "f1-score": 0.97,
+          "support": 309.0
+        },
+        "WebAttack": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 146.0
+        },
+        "accuracy": 0.994,
+        "macro avg": {
+          "precision": 0.9932152280437242,
+          "recall": 0.9916782246879334,
+          "f1-score": 0.9922393822393822,
+          "support": 3000.0
+        },
+        "weighted avg": {
+          "precision": 0.9942849604221636,
+          "recall": 0.994,
+          "f1-score": 0.993982972972973,
+          "support": 3000.0
+        }
+      },
+      "train_time_sec": 0.1005
+    }
+  },
+  "model_comparison_summary": [
+    {
+      "Model": "Random_Forest",
+      "Binary_Accuracy": 100.0,
+      "Binary_F1": 100.0,
+      "Binary_ROC_AUC": 1.0,
+      "Multi_F1_Macro": 99.91,
+      "Latency_ms": 0.0158,
+      "Throughput_sps": 63206.0,
+      "Train_Time_s": 0.8
+    },
+    {
+      "Model": "XGBoost",
+      "Binary_Accuracy": 99.93,
+      "Binary_F1": 99.93,
+      "Binary_ROC_AUC": 1.0,
+      "Multi_F1_Macro": 99.91,
+      "Latency_ms": 0.0013,
+      "Throughput_sps": 766127.0,
+      "Train_Time_s": 1.18
+    },
+    {
+      "Model": "Deep_Neural_Network_MLP",
+      "Binary_Accuracy": 100.0,
+      "Binary_F1": 100.0,
+      "Binary_ROC_AUC": 1.0,
+      "Multi_F1_Macro": 99.4,
+      "Latency_ms": 0.0016,
+      "Throughput_sps": 609843.0,
+      "Train_Time_s": 4.36
+    },
+    {
+      "Model": "Gradient_Boosting",
+      "Binary_Accuracy": 99.9,
+      "Binary_F1": 99.9,
+      "Binary_ROC_AUC": 1.0,
+      "Multi_F1_Macro": 100.0,
+      "Latency_ms": 0.002,
+      "Throughput_sps": 499725.0,
+      "Train_Time_s": 55.03
+    },
+    {
+      "Model": "Logistic_Regression",
+      "Binary_Accuracy": 99.77,
+      "Binary_F1": 99.77,
+      "Binary_ROC_AUC": 1.0,
+      "Multi_F1_Macro": 99.22,
+      "Latency_ms": 0.0002,
+      "Throughput_sps": 5890426.0,
+      "Train_Time_s": 0.12
+    }
+  ]
+}
