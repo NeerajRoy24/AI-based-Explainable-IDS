@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XAI-IDS | Explainable AI Intrusion Detection SOC Dashboard</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body class="cyber-dark">
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <div class="shield-logo">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="brand-text">
+                <div class="brand-title">XAI-IDS <span class="badge-v1">v1.0 SOC</span></div>
+                <div class="brand-subtitle">Explainable AI Intrusion Detection System</div>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <div class="model-select-wrapper">
+                <label for="modelSelect"><i class="fa-solid fa-brain"></i> Active Model:</label>
+                <select id="modelSelect" class="cyber-select" onchange="onModelChange()">
+                    <option value="random_forest" selected>Random Forest (Recommended)</option>
+                    <option value="xgboost">XGBoost Classifier</option>
+                    <option value="deep_neural_network_mlp">Deep Neural Network (MLP)</option>
+                    <option value="gradient_boosting">Gradient Boosting</option>
+                    <option value="logistic_regression">Logistic Regression Baseline</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <div class="status-indicator">
+                <span class="pulse-dot"></span>
+                <span class="status-text">SOC ONLINE</span>
+            </div>
+            <button class="cyber-btn btn-stream" id="streamToggleBtn" onclick="toggleTelemetryStream()">
+                <i class="fa-solid fa-satellite-dish"></i> Live Stream: <span id="streamStateText">ON</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <main class="dashboard-grid">
+
+        <!-- Left Column: Live Traffic Stream & Preset Injector -->
+        <section class="panel left-panel">
+            <div class="panel-header">
+                <div class="panel-title"><i class="fa-solid fa-network-wired"></i> Network Flow Feed</div>
+                <span class="sub-badge" id="flowCounterBadge">Captured: 0</span>
+            </div>
+
+            <!-- Attack Scenario Quick-Loader -->
+            <div class="scenario-selector-box">
+                <div class="section-label"><i class="fa-solid fa-bolt"></i> Inject Preset Threat Scenario:</div>
+                <div class="preset-buttons-grid">
+                    <button class="preset-btn btn-benign" onclick="loadPresetFlow('BENIGN')">
+                        <i class="fa-solid fa-circle-check"></i> Normal Web
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('DoS-SynFlood')">
+                        <i class="fa-solid fa-triangle-exclamation"></i> DoS SYN Flood
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('DDoS-LOIC')">
+                        <i class="fa-solid fa-burst"></i> DDoS LOIC
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('PortScan')">
+                        <i class="fa-solid fa-radar"></i> Port Scan
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('BruteForce-SSH')">
+                        <i class="fa-solid fa-key"></i> SSH BruteForce
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('Botnet-C2')">
+                        <i class="fa-solid fa-robot"></i> Botnet C2
+                    </button>
+                    <button class="preset-btn btn-attack" onclick="loadPresetFlow('WebAttack')">
+                        <i class="fa-solid fa-bug"></i> Web Attack
+                    </button>
+                </div>
+            </div>
+
+            <!-- Real-time Flow Stream Table -->
+            <div class="stream-container">
+                <div class="stream-header-row">
+                    <span>Target Port</span>
+                    <span>Packets/s</span>
+                    <span>Classification</span>
+                    <span>Action</span>
+                </div>
+                <div class="stream-list" id="streamList">
+                    <!-- Stream cards populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Flow Telemetry Inspector & Counterfactual Controls -->
+            <div class="inspector-box">
+                <div class="inspector-header">
+                    <div class="panel-title-sm"><i class="fa-solid fa-sliders"></i> Flow Telemetry & What-If Sandbox</div>
+                    <button class="cyber-btn btn-xs" onclick="resetFlowInputs()"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                </div>
+                <p class="helper-text">Inspect or adjust raw flow telemetry features to evaluate real-time counterfactual impact.</p>
+
+                <div class="inspector-form-grid" id="inspectorFields">
+                    <!-- Dynamically rendered feature input controls -->
+                </div>
+
+                <div class="inspector-actions">
+                    <button class="cyber-btn btn-primary w-100" onclick="analyzeCurrentFlow()">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i> Run Full XAI Inference
+                    </button>
+                    <button class="cyber-btn btn-warning w-100 mt-2" onclick="runWhatIfSimulation()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate What-If Delta
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: XAI Analysis, SHAP/LIME Visualizations, & SOC Advisory -->
+        <section class="panel right-panel">
+
+            <!-- Detection Assessment & Threat Severity Header -->
+            <div class="assessment-banner" id="assessmentBanner">
+                <div class="assessment-left">
+                    <div class="threat-status-label">CURRENT FLOW THREAT EVALUATION</div>
+                    <div class="threat-heading" id="threatClassificationHeading">ANALYZING FLOW...</div>
+                    <div class="threat-tags" id="threatTagsContainer">
+                        <span class="threat-tag badge-category" id="threatCategoryBadge">UNKNOWN</span>
+                        <span class="threat-tag badge-severity" id="threatSeverityBadge">UNKNOWN</span>
+                    </div>
+                </div>
+
+                <div class="assessment-center">
+                    <div class="gauge-card">
+                        <div class="gauge-value" id="threatRiskScore">0.0%</div>
+                        <div class="gauge-label">RISK PROBABILITY</div>
+                    </div>
+                </div>
+
+                <div class="assessment-right">
+                    <div class="action-status-card" id="actionStatusCard">
+                        <div class="action-label">RECOMMENDED SOC ACTION</div>
+                        <div class="action-code" id="advisoryActionCode">PENDING</div>
+                        <div class="action-note" id="advisoryActionNote">Awaiting feature evaluation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What-If Delta Notification Banner (Hidden by default) -->
+            <div class="what-if-banner d-none" id="whatIfBanner">
+                <div class="what-if-title"><i class="fa-solid fa-code-compare"></i> What-If Counterfactual Delta:</div>
+                <div class="what-if-text" id="whatIfText"></div>
+            </div>
+
+            <!-- Explainability Tabs -->
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('shapTab', this)">
+                    <i class="fa-solid fa-chart-simple"></i> SHAP Local Explanations
+                </button>
+                <button class="tab-btn" onclick="switchTab('limeTab', this)">
+                    <i class="fa-solid fa-scale-balanced"></i> LIME Surrogate Rules
+                </button>
+                <button class="tab-btn" onclick="switchTab('advisoryTab', this)">
+                    <i class="fa-solid fa-user-shield"></i> SOC Incident Advisory
+                </button>
+                <button class="tab-btn" onclick="switchTab('benchmarkTab', this)">
+                    <i class="fa-solid fa-trophy"></i> Multi-Model Benchmark
+                </button>
+                <button class="tab-btn" onclick="switchTab('globalShapTab', this)">
+                    <i class="fa-solid fa-globe"></i> Global Feature Importance
+                </button>
+            </div>
+
+            <!-- Tab 1: SHAP Explanations -->
+            <div class="tab-content active" id="shapTab">
+                <div class="xai-grid-2col">
+                    <div class="sub-panel">
+                        <div class="sub-panel-title">
+                            <span><i class="fa-solid fa-chart-column"></i> Local Feature Attribution (SHAP Waterfall)</span>
+                            <span class="badge-pill">Baseline $E[f(x)]$: <strong id="shapBaseVal">0.50</strong></span>
+                        </div>
+                        <p class="sub-panel-desc">
+                            Features pushing the prediction toward <span class="text-danger">Malicious (+SHAP)</span> vs <span class="text-success">Benign (-SHAP)</span>.
+                        </p>
+                        <div class="chart-box" style="height: 340px;">
+                            <canvas id="shapBarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="sub-panel">
+                        <div class="sub-panel-title"><i class="fa-solid fa-list-check"></i> Attribution Breakdown Table</div>
+                        <div class="table-scroll-box" style="height: 350px;">
+                            <table class="cyber-table" id="shapTable">
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Observed Value</th>
+                                        <th>SHAP Contribution</th>
+                                        <th>Impact Direction</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attack Class Distribution Chart -->
+                <div class="sub-panel mt-3">
+                    <div class="sub-panel-title"><i class="fa-solid fa-chart-pie"></i> Multi-Class Attack Probability Distribution</div>
+                    <div class="chart-box" style="height: 180px;">
+                        <canvas id="classProbChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: LIME Explanations -->
+            <div class="tab-content" id="limeTab">
+                <div class="xai-grid-2col">
+                    <div class="sub-panel">
+                        <div class="sub-panel-title">
+                            <span><i class="fa-solid fa-scale-unbalanced"></i> Local Surrogate Linear Model</span>
+                            <span class="badge-pill">Fidelity $R^2$: <strong id="limeFidelityScore">0.89</strong></span>
+                        </div>
+                        <p class="sub-panel-desc">
+                            Local decision boundaries and rule intervals extracted via perturbed sampling around the current network flow.
+                        </p>
+                        <div class="chart-box" style="height: 340px;">
+                            <canvas id="limeBarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="sub-panel">
+                        <div class="sub-panel-title"><i class="fa-solid fa-code"></i> Interpretable Rule Conditions</div>
+                        <div class="rules-list" id="limeRulesList" style="height: 350px; overflow-y: auto;">
+                            <!-- Dynamic LIME rule cards -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: SOC Incident Advisory -->
+            <div class="tab-content" id="advisoryTab">
+                <div class="advisory-card">
+                    <div class="advisory-header">
+                        <div class="advisory-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                        <div>
+                            <h3 id="advisoryTitle">Automated SOC Triage & Mitigation Advisory</h3>
+                            <p id="advisorySummary">Detailed incident analysis and remediation steps.</p>
+                        </div>
+                    </div>
+
+                    <div class="advisory-body">
+                        <div class="advisory-section">
+                            <h4><i class="fa-solid fa-fingerprint"></i> Key Forensic Evidence Identified:</h4>
+                            <ul class="evidence-list" id="advisoryEvidenceList">
+                                <!-- Populated dynamically -->
+                            </ul>
+                        </div>
+
+                        <div class="advisory-section">
+                            <h4><i class="fa-solid fa-lock"></i> Automated & Prescriptive Remediation:</h4>
+                            <ul class="mitigation-list" id="advisoryMitigationList">
+                                <!-- Populated dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="advisory-footer">
+                        <button class="cyber-btn btn-danger" onclick="triggerSimulatedMitigation()">
+                            <i class="fa-solid fa-ban"></i> Execute Firewall Containment
+                        </button>
+                        <button class="cyber-btn btn-secondary" onclick="exportIncidentReport()">
+                            <i class="fa-solid fa-file-export"></i> Export Incident Report (JSON)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Multi-Model Comparative Benchmark -->
+            <div class="tab-content" id="benchmarkTab">
+                <div class="sub-panel">
+                    <div class="sub-panel-title"><i class="fa-solid fa-chart-line"></i> Architectural Performance Comparison on CICIDS Test Set</div>
+                    <p class="sub-panel-desc">
+                        Rigorous comparison between Tree-Based Ensembles (Random Forest, XGBoost, Gradient Boosting), Deep Learning (MLP), and Linear Baselines.
+                    </p>
+                    <div class="table-scroll-box" style="margin-top: 10px;">
+                        <table class="cyber-table" id="benchmarkTable">
+                            <thead>
+                                <tr>
+                                    <th>Model Architecture</th>
+                                    <th>Binary Acc (%)</th>
+                                    <th>Binary F1 (%)</th>
+                                    <th>Multi-Class F1 (%)</th>
+                                    <th>ROC-AUC</th>
+                                    <th>Inference Latency (ms)</th>
+                                    <th>Throughput (flows/s)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Multi-Model Consensus on Current Flow -->
+                <div class="sub-panel mt-3">
+                    <div class="sub-panel-title"><i class="fa-solid fa-users-viewfinder"></i> Live Multi-Model Consensus on Inspected Flow</div>
+                    <div class="consensus-grid" id="consensusGrid">
+                        <!-- Populated via /api/compare-models -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: Global Feature Importance -->
+            <div class="tab-content" id="globalShapTab">
+                <div class="sub-panel">
+                    <div class="sub-panel-title"><i class="fa-solid fa-sitemap"></i> Global Dataset-Wide Feature Importance (Mean Absolute SHAP)</div>
+                    <p class="sub-panel-desc">
+                        Identifies which network protocol attributes have the highest overall influence across thousands of normal and malicious connections.
+                    </p>
+                    <div class="chart-box" style="height: 380px;">
+                        <canvas id="globalShapChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="static/js/main.js"></script>
+</body>
+</html>

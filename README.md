@@ -1,10 +1,11 @@
 # AI-Based Explainable Intrusion Detection System (XAI-IDS)
 
-[![Course](https://img.shields.io/badge/Course-BCSE306L--Artificial%20Intelligence-blue)](https://vit.ac.in)
-[![Review](https://img.shields.io/badge/Milestone-Review--1%20Completed-success)](#)
-[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.162.0-009688?logo=fastapi)](https://fastapi.tiangolo.com)
-[![XAI](https://img.shields.io/badge/XAI-SHAP%20%2B%20LIME-ff69b4)](#)
+[![Live Website](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success?logo=github&style=for-the-badge)](https://neerajroy24.github.io/AI-based-Explainable-IDS/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&style=for-the-badge)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.162.0-009688?logo=fastapi&style=for-the-badge)](https://fastapi.tiangolo.com)
+[![XAI](https://img.shields.io/badge/XAI-SHAP%20%2B%20LIME-ff69b4&style=for-the-badge)](#)
+
+> 🌐 **Public Live Demo:** **[https://neerajroy24.github.io/AI-based-Explainable-IDS/](https://neerajroy24.github.io/AI-based-Explainable-IDS/)**
 
 > **Course:** BCSE306L – Artificial Intelligence  
 > **Faculty:** Dr. D. Anuradha  
