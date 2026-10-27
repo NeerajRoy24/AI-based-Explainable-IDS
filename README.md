@@ -11,7 +11,7 @@
 > **Faculty:** Dr. D. Anuradha  
 > **Student:** Neeraj Roy (Reg No: **24BDS0427**)  
 > **School:** School of Computer Science and Engineering  
-> **Review:** Course Project Review – 1  
+> **Project Document:** [Project document - VTOP.docx](Project%20document%20-%20VTOP.docx)  
 
 ---
 
@@ -73,10 +73,10 @@ AI project/
 │           └── main.js                 # Frontend telemetry stream & Chart.js logic
 │
 ├── reports/
-│   ├── project_review_1_report.md      # Full academic Review 1 report for Dr. D. Anuradha
 │   ├── model_benchmark_report.json     # Machine-readable benchmark evaluation metrics
 │   └── model_comparison_charts.png     # 4-panel visual comparative benchmark chart
 │
+├── Project document - VTOP.docx        # Official VTOP Course Project Document
 ├── run_pipeline.py                     # One-click end-to-end data, training, & evaluation
 ├── run_dashboard.py                    # One-click launcher for the SOC Web Dashboard
 ├── requirements.txt                    # Frozen dependency specifications
@@ -127,14 +127,14 @@ Open your browser and navigate to:
 4. **LIME Local Surrogate Rules:** Extracted interpretable condition intervals and fidelity $R^2$ scores.
 5. **Interactive What-If Counterfactual Sandbox:** Tweak packet rates, flags, or payload statistics and instantly inspect risk score deltas ($\Delta$).
 6. **Prescriptive Incident Containment:** Automated mapping of threat indicators to firewall and edge mitigation actions (e.g., rate-limiting, SYN-cookies, prefix blackholing).
-7. **Academic Review 1 Modal:** Accessible via navbar button containing all project guidelines, student details, and research gap formulations.
+7. **Academic Project Info Modal:** Accessible via navbar button containing all project guidelines, student details, and research formulations.
 
 ---
 
-## 📜 Academic Details (Review – 1)
+## 📜 Academic Course Project Details
 - **Course:** BCSE306L – Artificial Intelligence
 - **Faculty:** Dr. D. Anuradha
 - **Student:** Neeraj Roy (Reg. No: 24BDS0427)
 - **Slot:** C2+TC2
 - **Semester:** Fall 2026-27
-- **Full Report:** See [reports/project_review_1_report.md](file:///reports/project_review_1_report.md)
+- **Official VTOP Document:** [Project document - VTOP.docx](Project%20document%20-%20VTOP.docx)

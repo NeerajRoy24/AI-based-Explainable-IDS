@@ -44,3 +44,10 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+# Office & LibreOffice lock / temporary files
+.~lock.*
+~$*
+*.tmp
+*backup*
+*.bak
