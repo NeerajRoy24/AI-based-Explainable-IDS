@@ -11,7 +11,6 @@
 > **Faculty:** Dr. D. Anuradha  
 > **Student:** Neeraj Roy (Reg No: **24BDS0427**)  
 > **School:** School of Computer Science and Engineering  
-> **Project Document:** [Project document - VTOP.docx](Project%20document%20-%20VTOP.docx)  
 
 ---
 
@@ -76,7 +75,6 @@ AI project/
 │   ├── model_benchmark_report.json     # Machine-readable benchmark evaluation metrics
 │   └── model_comparison_charts.png     # 4-panel visual comparative benchmark chart
 │
-├── Project document - VTOP.docx        # Official VTOP Course Project Document
 ├── run_pipeline.py                     # One-click end-to-end data, training, & evaluation
 ├── run_dashboard.py                    # One-click launcher for the SOC Web Dashboard
 ├── requirements.txt                    # Frozen dependency specifications
@@ -137,4 +135,3 @@ Open your browser and navigate to:
 - **Student:** Neeraj Roy (Reg. No: 24BDS0427)
 - **Slot:** C2+TC2
 - **Semester:** Fall 2026-27
-- **Official VTOP Document:** [Project document - VTOP.docx](Project%20document%20-%20VTOP.docx)

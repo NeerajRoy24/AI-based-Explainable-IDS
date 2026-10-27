@@ -51,3 +51,5 @@ desktop.ini
 *.tmp
 *backup*
 *.bak
+*.docx
+generate_vtop_doc.py
