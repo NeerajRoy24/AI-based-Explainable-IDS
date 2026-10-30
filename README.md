@@ -7,10 +7,6 @@
 
 > 🌐 **Public Live Demo:** **[https://neerajroy24.github.io/AI-based-Explainable-IDS/](https://neerajroy24.github.io/AI-based-Explainable-IDS/)**
 
-> **Course:** BCSE306L – Artificial Intelligence  
-> **Faculty:** Dr. D. Anuradha  
-> **Student:** Neeraj Roy (Reg No: **24BDS0427**)  
-> **School:** School of Computer Science and Engineering  
 
 ---
 
@@ -129,9 +125,3 @@ Open your browser and navigate to:
 
 ---
 
-## 📜 Academic Course Project Details
-- **Course:** BCSE306L – Artificial Intelligence
-- **Faculty:** Dr. D. Anuradha
-- **Student:** Neeraj Roy (Reg. No: 24BDS0427)
-- **Slot:** C2+TC2
-- **Semester:** Fall 2026-27
